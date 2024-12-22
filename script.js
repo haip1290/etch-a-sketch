@@ -6,15 +6,9 @@ container.style.height = containerSize + "px";
 // create 16*16 grid
 const originalNumberOfSquare = 16;
 createGrid(originalNumberOfSquare);
+changeSquareColorWhenHover();
 
-// change color of square when hover
-let squares = document.querySelectorAll(".square");
-squares.forEach((square) =>
-  square.addEventListener("mouseover", () => {
-    square.style.backgroundColor = "red";
-  })
-);
-
+// add btn to change size
 let btn = document.querySelector("button");
 const MAX_NUM_OF_SQUARE = 100;
 btn.addEventListener("click", () => {
@@ -24,6 +18,7 @@ btn.addEventListener("click", () => {
   }
   container.innerHTML = "";
   createGrid(numberOfSquare);
+  changeSquareColorWhenHover();
 });
 
 // function to create grid
@@ -36,4 +31,14 @@ function createGrid(numberOfSquare) {
     square.style.height = squareSize + "px";
     container.appendChild(square);
   }
+}
+
+// change color of square when hover
+function changeSquareColorWhenHover() {
+  let squares = document.querySelectorAll(".square");
+  squares.forEach((square) =>
+    square.addEventListener("mouseover", () => {
+      square.style.backgroundColor = "red";
+    })
+  );
 }
