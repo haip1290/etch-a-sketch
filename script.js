@@ -36,9 +36,20 @@ function createGrid(numberOfSquare) {
 // change color of square when hover
 function changeSquareColorWhenHover() {
   let squares = document.querySelectorAll(".square");
-  squares.forEach((square) =>
+  let red = Math.round(Math.random() * 255);
+  let blue = Math.round(Math.random() * 255);
+  let green = Math.round(Math.random() * 255);
+  const step = 0.1;
+  squares.forEach((square) => {
+    square.style.opacity = 0.1;
     square.addEventListener("mouseover", () => {
-      square.style.backgroundColor = "red";
-    })
-  );
+      square.style.backgroundColor = `rgb(${red},${blue},${green})`;
+      let currentOpacity = parseFloat(square.style.opacity);
+      currentOpacity += step;
+      if (currentOpacity > 1) {
+        currentOpacity = 1;
+      }
+      square.style.opacity = currentOpacity;
+    });
+  });
 }
